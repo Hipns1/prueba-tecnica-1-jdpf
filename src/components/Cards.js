@@ -7,7 +7,7 @@ const Cards = () => {
 
     const [data, setData] = useState([])
 
-    const getApi = async() => {
+    const getApi = async () => {
         const resp = await fetch(url);
         const data = await resp.json();
         setData(data)
@@ -15,20 +15,20 @@ const Cards = () => {
     useEffect(() => {
         getApi();
     }, [])
-    
-    const btnEliminar = async(id) => {
-        await fetch(url+id, {method: "DELETE"})
+
+    const btnEliminar = async (id) => {
+        await fetch(url + id, { method: "DELETE" })
         getApi();
     }
 
-    const btnDetalle = async(nombre, precio, imagen) => {
+    const btnDetalle = async (nombre, precio, imagen) => {
         await Swal.fire({
-          title: `${nombre}`,
-          text: `$ ${precio}`,
-          imageUrl: `${imagen}`,
-          imageHeight: 400
+            title: `${nombre}`,
+            text: `$ ${precio}`,
+            imageUrl: `${imagen}`,
+            imageHeight: 400
         })
-      }
+    }
 
 
 
@@ -41,11 +41,11 @@ const Cards = () => {
                         <h1>{game.nombre}</h1>
                         <h2>$ {game.precio}</h2>
                         <button onClick={() => btnEliminar(game.id)}>Eliminar</button>
-                        <button 
+                        <button
                             onClick={() => btnDetalle(game.nombre, game.precio, game.imagen)}
-                            >Detalle
+                        >Detalle
                         </button>
-                    </div>  
+                    </div>
                 ))
             }
         </div>
