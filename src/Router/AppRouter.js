@@ -4,6 +4,7 @@ import {BrowserRouter as Router,
     Route,
     Navigate} 
     from 'react-router-dom';
+import Bienvenido from '../components/Bienvenido';
 import Cards from '../components/Cards';
 import FormularioProducto from '../components/FormularioProducto';
 import NavBar from '../components/NavBar';
@@ -16,8 +17,9 @@ function AppRouter() {
       <Router>
             <NavBar/> 
                 <Routes>
-                <Route path="/" element={<FormularioProducto/>}/>
+                    <Route path="/" element={<Bienvenido/>}/>
                     <Route path="/productos" element={<Cards/>}/>
+                    <Route path="/formulario" element={<FormularioProducto/>}/>
                     <Route path="/*" element={<Navigate to="/"/>}/>
                 </Routes>
             </Router>

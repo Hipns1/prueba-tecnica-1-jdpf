@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { url } from '../helpers/Url';
+import { ButtonDetalle, ButtonEliminar, CardStyle, DivContainer } from '../styles/Styles';
 
 
 const Cards = () => {
@@ -30,25 +31,24 @@ const Cards = () => {
         })
     }
 
-
-
     return (
-        <div>
+        <DivContainer>
             {
                 data.map(game => (
-                    <div key={game.id}>
-                        <img src={game.imagen}></img>
+                    <CardStyle key={game.id}>
+                        <img src={game.imagen} alt=""></img>
                         <h1>{game.nombre}</h1>
-                        <h2>$ {game.precio}</h2>
-                        <button onClick={() => btnEliminar(game.id)}>Eliminar</button>
-                        <button
+                        <h2>Disponible</h2>
+                        <h3>$ {game.precio}</h3>
+                        <ButtonEliminar onClick={() => btnEliminar(game.id)}>Eliminar</ButtonEliminar>
+                        <ButtonDetalle
                             onClick={() => btnDetalle(game.nombre, game.precio, game.imagen)}
                         >Detalle
-                        </button>
-                    </div>
+                        </ButtonDetalle>
+                    </CardStyle>
                 ))
             }
-        </div>
+        </DivContainer>
     )
 }
 

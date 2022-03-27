@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import Swal from 'sweetalert2'
-import { FileUpload } from '../helpers/FileUpload'
-import { url } from '../helpers/Url'
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import { FileUpload } from '../helpers/FileUpload';
+import { url } from '../helpers/Url';
+import { DivForm, InputElegir } from '../styles/Styles';
+import uploadImg from "../styles/images/upload.png";
 
 const FormularioProducto = () => {
 
@@ -14,7 +16,7 @@ const FormularioProducto = () => {
   const handleChanged = ({ target }) => {
     setAgregar({
       ...agregar,
-      [target.name]: [target.value]
+      [target.name]: target.value
     })
   }
 
@@ -37,7 +39,15 @@ const FormularioProducto = () => {
 
   const handleFileChanged = (e) => {
     const file = e.target.files[0];
-    Swal.fire('Espere mientras carga la imagen')
+    /* Swal.fire('Espere mientras carga la imagen') */
+
+    Swal.fire({
+      title: 'Cargando',
+      text: "Espere mientras carga la imagen",
+      icon: 'warning',
+      showCancelButton: false,
+      showConfirmButton: false,
+    })
     FileUpload(file)
       .then(resp => {
         agregar.imagen = resp;
@@ -54,21 +64,19 @@ const FormularioProducto = () => {
 
   const { imagen, nombre, precio } = agregar;
   return (
-    <div className='formData'>
+    <DivForm className='formData'>
       <form onSubmit={handleSubmit}>
         <input type="texto" name="nombre" placeholder="Ingrese el nombre"
           onChange={handleChanged} value={nombre} />
         <input type="texto" name="precio" placeholder="Ingrese el precio"
           onChange={handleChanged} value={precio} />
-        <input type="file" name="imagen"
-          onChange={handleFileChanged} value={imagen} />
+        <label><img src={uploadImg} alt=""/>Upload image<InputElegir type="file" name="imagen"
+          onChange={handleFileChanged} value={imagen} /></label>
         <button onClick={agregarGame}>Enviar</button>
       </form>
 
-    </div>
+    </DivForm>
   )
 }
-
-
 
 export default FormularioProducto;
