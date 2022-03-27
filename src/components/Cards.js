@@ -25,9 +25,9 @@ const Cards = () => {
     const btnDetalle = async (nombre, precio, imagen) => {
         await Swal.fire({
             title: `${nombre}`,
-            text: `$ ${precio}`,
+            text: `USD ${precio}`,
             imageUrl: `${imagen}`,
-            imageHeight: 400
+            imageHeight: 400,
         })
     }
 
@@ -39,7 +39,7 @@ const Cards = () => {
                         <img src={game.imagen} alt=""></img>
                         <h1>{game.nombre}</h1>
                         <h2>Disponible</h2>
-                        <h3>$ {game.precio}</h3>
+                        <h3>USD {game.precio}</h3>
                         <ButtonEliminar onClick={() => btnEliminar(game.id)}>Eliminar</ButtonEliminar>
                         <ButtonDetalle
                             onClick={() => btnDetalle(game.nombre, game.precio, game.imagen)}

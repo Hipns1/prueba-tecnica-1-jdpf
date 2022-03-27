@@ -67,10 +67,16 @@ export const DivText = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 40px;
+    @media (max-width:750px) {
+        width: 90%;
+    }
     h1{
         color:#341479;
         font-size: 50px;
         text-transform: uppercase;
+        @media (max-width:750px) {
+            font-size: 30px;
+        }
     }
     button{
         background-color: #341479;
